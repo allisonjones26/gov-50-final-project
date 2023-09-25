@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring data related to how Americans’ political ideologies impact their media preferences. I am intrigued in learning how our political beliefs impact the way we access and interpret information because it helps us understand how political polarization may be influenced by the media people choose to engage with.
