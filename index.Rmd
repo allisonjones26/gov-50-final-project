@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to how Americans’ political ideologies impact their media preferences. I am intrigued in learning how our political beliefs impact the way we access and interpret information because it helps us understand how political polarization may be influenced by the media people choose to engage with.
+I am interested in exploring data related to types of Halloween candy and their popularity among consumers. In particular, I am curious to learn if Halloween candy containing nuts tends to be more popular than nut-free candy. The study’s findings might help consumers make informed choices when purchasing Halloween candy by ensuring consumers choose treats that are more likely to be enjoyed by trick-or-treaters.
