@@ -32,7 +32,7 @@ candy_rankings <- candy |>
 
 candy_rankgings_graph <- candy_rankings |> 
   arrange(desc(winpercent)) |> 
-  slice_max(winpercent, n = 25) |>
+  slice_max(winpercent, n = 15) |>
   ggplot(mapping = aes(x = winpercent, y = fct_reorder(competitorname, winpercent), fill =`Types of Candy`)) + 
   geom_col() + 
   scale_fill_manual(values = c("steelblue1","indianred1")) +
