@@ -24,11 +24,12 @@ library(dplyr)
 candy <- read.csv("candy-data.csv")
 ```
 
-```{r, echo = FALSE, fig.width = 8, fig.height = 11}
 
+```{r}
 candy_rankings <- candy |> 
   mutate(`Types of Candy` = if_else(peanutyalmondy == 1, "Nut Candy", "Nut-Free Candy")) |>
   filter(! competitorname %in% c("One dime", "One quarter"))
+candy_rankings
 
 candy_rankgings_graph <- candy_rankings |> 
   arrange(desc(winpercent)) |> 
@@ -39,4 +40,11 @@ candy_rankgings_graph <- candy_rankings |>
   labs(x = "Percentage of Matchups Won by Candies", y = "Name of Candies", title = "Percentage of Matchups Won by Nut Candies vs. Nut-Free Candies", caption = "Walt Hickey's 538 Data Set")
 candy_rankgings_graph
 ```
+Walt Hickey's 538 dataset about Halloween candy consists of 83 candies, each acting as an individual unit of analysis. The popularity of these Halloween candies were measured by the percentage of matchups won by each candy in an online preference matchup. This bar plot was produced after ranking all 83 candies in descending order, based on the percentage of matchups they won. Subsequently, the focus was narrowed by selecting a representative sample of the top 15 candies of the original 83. 
+
+This bar plot supports my hypothesis that Halloween candies made with nuts (or nut products), classified as “Nut Candy” in the bar plot, are more popular among consumers than candies made without nuts (or nut products), classified as “Nut-Free Candy.” This assertion gains support when we consider that 8 out of the top 15 candies are “Nut Candies,” and these 8 “Nut Candies” maintained rankings within the top 11 positions, ranking as high as 1st, 2nd, and 5th places. Ultimately, the bar plot demonstrates compelling evidence that candies with nuts are more popular with treat-seeking consumers during the Halloween season. 
+
+
+
+
 
