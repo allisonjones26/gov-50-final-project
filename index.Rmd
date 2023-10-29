@@ -29,12 +29,11 @@ candy <- read.csv("candy-data.csv")
 candy_rankings <- candy |> 
   mutate(`Types of Candy` = if_else(peanutyalmondy == 1, "Nut Candy", "Nut-Free Candy")) |>
   filter(! competitorname %in% c("One dime", "One quarter"))
-candy_rankings
 
 candy_rankgings_graph <- candy_rankings |> 
   arrange(desc(winpercent)) |> 
   slice_max(winpercent, n = 15) |>
-  ggplot(mapping = aes(x = winpercent, y = fct_reorder(competitorname, winpercent), fill =`Types of Candy`)) + 
+  ggplot(mapping = aes(x = winpercent, y = fct_reorder(competitorname, winpercent), fill =`Types of Candy`)) +
   geom_col() + 
   scale_fill_manual(values = c("steelblue1","indianred1")) +
   labs(x = "Percentage of Matchups Won by Candies", y = "Name of Candies", title = "Percentage of Matchups Won by Nut Candies vs. Nut-Free Candies", caption = "Walt Hickey's 538 Data Set")
