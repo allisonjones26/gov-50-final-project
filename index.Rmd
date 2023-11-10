@@ -48,7 +48,7 @@ This bar plot supports my hypothesis that Halloween candies made with nuts (or n
 candy_rankings <- candy |> 
   mutate(`Types of Candy` = if_else(peanutyalmondy == 1, "Nut Candy", "Nut-Free Candy")) |>
   filter(! competitorname %in% c("One dime", "One quarter")) |> 
-  slice_max(sugarpercent, n = 85) 
+  slice_max(sugarpercent, n = 85)
 
 sugar_vs_win_graph <- candy_rankings |> 
   ggplot(aes(x = sugarpercent, y = winpercent, color = `Types of Candy`)) + 
