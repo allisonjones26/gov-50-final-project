@@ -30,14 +30,14 @@ candy_rankings <- candy |>
   mutate(`Types of Candy` = if_else(peanutyalmondy == 1, "Nut Candy", "Nut-Free Candy")) |>
   filter(! competitorname %in% c("One dime", "One quarter"))
 
-candy_rankgings_graph <- candy_rankings |> 
+candy_rankings_graph <- candy_rankings |> 
   arrange(desc(winpercent)) |> 
   slice_max(winpercent, n = 15) |>
   ggplot(mapping = aes(x = winpercent, y = fct_reorder(competitorname, winpercent), fill =`Types of Candy`)) +
   geom_col() + 
   scale_fill_manual(values = c("steelblue1","indianred1")) +
   labs(x = "Percentage of Matchups Won by Candies", y = "Name of Candies", title = "Percentage of Matchups Won by Nut Candies vs. Nut-Free Candies", caption = "Walt Hickey's 538 Data Set")
-candy_rankgings_graph
+candy_rankings_graph
 ```
 Walt Hickey's 538 data set about Halloween candy consists of 83 candies, each acting as an individual unit of analysis. The popularity of these Halloween candies were measured by the percentage of matchups won by each candy in an online preference matchup. This bar plot was produced after ranking all 83 candies in descending order, based on the percentage of matchups they won. Subsequently, the focus was narrowed by selecting a representative sample of the top 15 candies of the original 83. 
 
@@ -59,7 +59,6 @@ sugar_vs_win_graph <- candy_rankings |>
   geom_vline(xintercept = mean(candy_rankings$sugarpercent), linetype = "dashed") + 
   labs(x = "Percentile of Sugar Content in Candies", y = "Percentile of Matchups Won by Candies", title = "Percentile of Sugar Content in Candies vs. Percentile of Matchups Won by Candies", caption = "Walt Hickey's 538 Data Set")
 sugar_vs_win_graph 
-
 ```
 Each candy in the dataset is represented as a point on the graph, with its position indicating both its sugar content percentile and its percentile of matchups won. The scatter plot indicates a strong correlation between higher sugar content and increased popularity in matchups. Notably, the upper right quadrant, representing candies with both above-average sugar content and high matchups won, features 8 out of the 13 nut candies. This suggests that candies with nuts not only tend to be sweeter but also outperform nut-free candies in terms of winning matchups. The findings suggest a preference for the combination of nutty flavors and increased sweetness. However, it is important to recognize that the scatterplot does not establish causation, and other unexplored factors may contribute to the observed patterns. 
 
