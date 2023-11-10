@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["candy-data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["candy-data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1530,8 +1530,262 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>candy_rankings</span> <span class='op'>&lt;-</span> <span class='va'>candy</span> <span class='op'>|&gt;</span> </span>
 <span>  <span class='fu'>mutate</span><span class='op'>(</span>`Types of Candy` <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>peanutyalmondy</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Nut Candy"</span>, <span class='st'>"Nut-Free Candy"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span> <span class='va'>competitorname</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"One dime"</span>, <span class='st'>"One quarter"</span><span class='op'>)</span><span class='op'>)</span></span>
-<span></span>
-<span><span class='va'>candy_rankgings_graph</span> <span class='op'>&lt;-</span> <span class='va'>candy_rankings</span> <span class='op'>|&gt;</span> </span>
+<span><span class='va'>candy_rankings</span></span></code></pre>
+</div>
+<pre><code>                competitorname chocolate fruity caramel
+1                    100 Grand         1      0       1
+2                 3 Musketeers         1      0       0
+3                    Air Heads         0      1       0
+4                   Almond Joy         1      0       0
+5                    Baby Ruth         1      0       1
+6           Boston Baked Beans         0      0       0
+7                   Candy Corn         0      0       0
+8           Caramel Apple Pops         0      1       1
+9              Charleston Chew         1      0       0
+10  Chewey Lemonhead Fruit Mix         0      1       0
+11                    Chiclets         0      1       0
+12                        Dots         0      1       0
+13                    Dum Dums         0      1       0
+14                 Fruit Chews         0      1       0
+15                     Fun Dip         0      1       0
+16                  Gobstopper         0      1       0
+17           Haribo Gold Bears         0      1       0
+18           Haribo Happy Cola         0      0       0
+19           Haribo Sour Bears         0      1       0
+20          Haribo Twin Snakes         0      1       0
+21            Hershey&#39;s Kisses         1      0       0
+22           Hershey&#39;s Krackel         1      0       0
+23    Hershey&#39;s Milk Chocolate         1      0       0
+24      Hershey&#39;s Special Dark         1      0       0
+25                  Jawbusters         0      1       0
+26                Junior Mints         1      0       0
+27                     Kit Kat         1      0       0
+28                 Laffy Taffy         0      1       0
+29                   Lemonhead         0      1       0
+30 Lifesavers big ring gummies         0      1       0
+31         Peanut butter M&amp;M&#39;s         1      0       0
+32                       M&amp;M&#39;s         1      0       0
+33                  Mike &amp; Ike         0      1       0
+34                   Milk Duds         1      0       1
+35                   Milky Way         1      0       1
+36          Milky Way Midnight         1      0       1
+37    Milky Way Simply Caramel         1      0       1
+38                      Mounds         1      0       0
+39                 Mr Good Bar         1      0       0
+40                       Nerds         0      1       0
+41         Nestle Butterfinger         1      0       0
+42               Nestle Crunch         1      0       0
+43                   Nik L Nip         0      1       0
+44                 Now &amp; Later         0      1       0
+45                      Payday         0      0       0
+46                 Peanut M&amp;Ms         1      0       0
+47                Pixie Sticks         0      0       0
+48                   Pop Rocks         0      1       0
+49                   Red vines         0      1       0
+50          Reese&#39;s Miniatures         1      0       0
+51   Reese&#39;s Peanut Butter cup         1      0       0
+52              Reese&#39;s pieces         1      0       0
+53 Reese&#39;s stuffed with pieces         1      0       0
+54                    Ring pop         0      1       0
+55                        Rolo         1      0       1
+56           Root Beer Barrels         0      0       0
+57                       Runts         0      1       0
+58                     Sixlets         1      0       0
+59           Skittles original         0      1       0
+60          Skittles wildberry         0      1       0
+61             Nestle Smarties         1      0       0
+62              Smarties candy         0      1       0
+63                    Snickers         1      0       1
+64            Snickers Crisper         1      0       1
+65             Sour Patch Kids         0      1       0
+66       Sour Patch Tricksters         0      1       0
+67                   Starburst         0      1       0
+68         Strawberry bon bons         0      1       0
+69                Sugar Babies         0      0       1
+70                 Sugar Daddy         0      0       1
+71                Super Bubble         0      1       0
+72                Swedish Fish         0      1       0
+73                 Tootsie Pop         1      1       0
+74        Tootsie Roll Juniors         1      0       0
+75        Tootsie Roll Midgies         1      0       0
+76     Tootsie Roll Snack Bars         1      0       0
+77           Trolli Sour Bites         0      1       0
+78                        Twix         1      0       1
+79                   Twizzlers         0      1       0
+80                    Warheads         0      1       0
+81        Welch&#39;s Fruit Snacks         0      1       0
+82  Werther&#39;s Original Caramel         0      0       1
+83                    Whoppers         1      0       0
+   peanutyalmondy nougat crispedricewafer hard bar pluribus
+1               0      0                1    0   1        0
+2               0      1                0    0   1        0
+3               0      0                0    0   0        0
+4               1      0                0    0   1        0
+5               1      1                0    0   1        0
+6               1      0                0    0   0        1
+7               0      0                0    0   0        1
+8               0      0                0    0   0        0
+9               0      1                0    0   1        0
+10              0      0                0    0   0        1
+11              0      0                0    0   0        1
+12              0      0                0    0   0        1
+13              0      0                0    1   0        0
+14              0      0                0    0   0        1
+15              0      0                0    1   0        0
+16              0      0                0    1   0        1
+17              0      0                0    0   0        1
+18              0      0                0    0   0        1
+19              0      0                0    0   0        1
+20              0      0                0    0   0        1
+21              0      0                0    0   0        1
+22              0      0                1    0   1        0
+23              0      0                0    0   1        0
+24              0      0                0    0   1        0
+25              0      0                0    1   0        1
+26              0      0                0    0   0        1
+27              0      0                1    0   1        0
+28              0      0                0    0   0        0
+29              0      0                0    1   0        0
+30              0      0                0    0   0        0
+31              1      0                0    0   0        1
+32              0      0                0    0   0        1
+33              0      0                0    0   0        1
+34              0      0                0    0   0        1
+35              0      1                0    0   1        0
+36              0      1                0    0   1        0
+37              0      0                0    0   1        0
+38              0      0                0    0   1        0
+39              1      0                0    0   1        0
+40              0      0                0    1   0        1
+41              1      0                0    0   1        0
+42              0      0                1    0   1        0
+43              0      0                0    0   0        1
+44              0      0                0    0   0        1
+45              1      1                0    0   1        0
+46              1      0                0    0   0        1
+47              0      0                0    0   0        1
+48              0      0                0    1   0        1
+49              0      0                0    0   0        1
+50              1      0                0    0   0        0
+51              1      0                0    0   0        0
+52              1      0                0    0   0        1
+53              1      0                0    0   0        0
+54              0      0                0    1   0        0
+55              0      0                0    0   0        1
+56              0      0                0    1   0        1
+57              0      0                0    1   0        1
+58              0      0                0    0   0        1
+59              0      0                0    0   0        1
+60              0      0                0    0   0        1
+61              0      0                0    0   0        1
+62              0      0                0    1   0        1
+63              1      1                0    0   1        0
+64              1      0                1    0   1        0
+65              0      0                0    0   0        1
+66              0      0                0    0   0        1
+67              0      0                0    0   0        1
+68              0      0                0    1   0        1
+69              0      0                0    0   0        1
+70              0      0                0    0   0        0
+71              0      0                0    0   0        0
+72              0      0                0    0   0        1
+73              0      0                0    1   0        0
+74              0      0                0    0   0        0
+75              0      0                0    0   0        1
+76              0      0                0    0   1        0
+77              0      0                0    0   0        1
+78              0      0                1    0   1        0
+79              0      0                0    0   0        0
+80              0      0                0    1   0        0
+81              0      0                0    0   0        1
+82              0      0                0    1   0        0
+83              0      0                1    0   0        1
+   sugarpercent pricepercent winpercent Types of Candy
+1         0.732        0.860   66.97173 Nut-Free Candy
+2         0.604        0.511   67.60294 Nut-Free Candy
+3         0.906        0.511   52.34146 Nut-Free Candy
+4         0.465        0.767   50.34755      Nut Candy
+5         0.604        0.767   56.91455      Nut Candy
+6         0.313        0.511   23.41782      Nut Candy
+7         0.906        0.325   38.01096 Nut-Free Candy
+8         0.604        0.325   34.51768 Nut-Free Candy
+9         0.604        0.511   38.97504 Nut-Free Candy
+10        0.732        0.511   36.01763 Nut-Free Candy
+11        0.046        0.325   24.52499 Nut-Free Candy
+12        0.732        0.511   42.27208 Nut-Free Candy
+13        0.732        0.034   39.46056 Nut-Free Candy
+14        0.127        0.034   43.08892 Nut-Free Candy
+15        0.732        0.325   39.18550 Nut-Free Candy
+16        0.906        0.453   46.78335 Nut-Free Candy
+17        0.465        0.465   57.11974 Nut-Free Candy
+18        0.465        0.465   34.15896 Nut-Free Candy
+19        0.465        0.465   51.41243 Nut-Free Candy
+20        0.465        0.465   42.17877 Nut-Free Candy
+21        0.127        0.093   55.37545 Nut-Free Candy
+22        0.430        0.918   62.28448 Nut-Free Candy
+23        0.430        0.918   56.49050 Nut-Free Candy
+24        0.430        0.918   59.23612 Nut-Free Candy
+25        0.093        0.511   28.12744 Nut-Free Candy
+26        0.197        0.511   57.21925 Nut-Free Candy
+27        0.313        0.511   76.76860 Nut-Free Candy
+28        0.220        0.116   41.38956 Nut-Free Candy
+29        0.046        0.104   39.14106 Nut-Free Candy
+30        0.267        0.279   52.91139 Nut-Free Candy
+31        0.825        0.651   71.46505      Nut Candy
+32        0.825        0.651   66.57458 Nut-Free Candy
+33        0.872        0.325   46.41172 Nut-Free Candy
+34        0.302        0.511   55.06407 Nut-Free Candy
+35        0.604        0.651   73.09956 Nut-Free Candy
+36        0.732        0.441   60.80070 Nut-Free Candy
+37        0.965        0.860   64.35334 Nut-Free Candy
+38        0.313        0.860   47.82975 Nut-Free Candy
+39        0.313        0.918   54.52645      Nut Candy
+40        0.848        0.325   55.35405 Nut-Free Candy
+41        0.604        0.767   70.73564      Nut Candy
+42        0.313        0.767   66.47068 Nut-Free Candy
+43        0.197        0.976   22.44534 Nut-Free Candy
+44        0.220        0.325   39.44680 Nut-Free Candy
+45        0.465        0.767   46.29660      Nut Candy
+46        0.593        0.651   69.48379      Nut Candy
+47        0.093        0.023   37.72234 Nut-Free Candy
+48        0.604        0.837   41.26551 Nut-Free Candy
+49        0.581        0.116   37.34852 Nut-Free Candy
+50        0.034        0.279   81.86626      Nut Candy
+51        0.720        0.651   84.18029      Nut Candy
+52        0.406        0.651   73.43499      Nut Candy
+53        0.988        0.651   72.88790      Nut Candy
+54        0.732        0.965   35.29076 Nut-Free Candy
+55        0.860        0.860   65.71629 Nut-Free Candy
+56        0.732        0.069   29.70369 Nut-Free Candy
+57        0.872        0.279   42.84914 Nut-Free Candy
+58        0.220        0.081   34.72200 Nut-Free Candy
+59        0.941        0.220   63.08514 Nut-Free Candy
+60        0.941        0.220   55.10370 Nut-Free Candy
+61        0.267        0.976   37.88719 Nut-Free Candy
+62        0.267        0.116   45.99583 Nut-Free Candy
+63        0.546        0.651   76.67378      Nut Candy
+64        0.604        0.651   59.52925      Nut Candy
+65        0.069        0.116   59.86400 Nut-Free Candy
+66        0.069        0.116   52.82595 Nut-Free Candy
+67        0.151        0.220   67.03763 Nut-Free Candy
+68        0.569        0.058   34.57899 Nut-Free Candy
+69        0.965        0.767   33.43755 Nut-Free Candy
+70        0.418        0.325   32.23100 Nut-Free Candy
+71        0.162        0.116   27.30386 Nut-Free Candy
+72        0.604        0.755   54.86111 Nut-Free Candy
+73        0.604        0.325   48.98265 Nut-Free Candy
+74        0.313        0.511   43.06890 Nut-Free Candy
+75        0.174        0.011   45.73675 Nut-Free Candy
+76        0.465        0.325   49.65350 Nut-Free Candy
+77        0.313        0.255   47.17323 Nut-Free Candy
+78        0.546        0.906   81.64291 Nut-Free Candy
+79        0.220        0.116   45.46628 Nut-Free Candy
+80        0.093        0.116   39.01190 Nut-Free Candy
+81        0.313        0.313   44.37552 Nut-Free Candy
+82        0.186        0.267   41.90431 Nut-Free Candy
+83        0.872        0.848   49.52411 Nut-Free Candy</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>candy_rankgings_graph</span> <span class='op'>&lt;-</span> <span class='va'>candy_rankings</span> <span class='op'>|&gt;</span> </span>
 <span>  <span class='fu'>arrange</span><span class='op'>(</span><span class='fu'>desc</span><span class='op'>(</span><span class='va'>winpercent</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
 <span>  <span class='fu'>slice_max</span><span class='op'>(</span><span class='va'>winpercent</span>, n <span class='op'>=</span> <span class='fl'>15</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>ggplot</span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>winpercent</span>, y <span class='op'>=</span> <span class='fu'>fct_reorder</span><span class='op'>(</span><span class='va'>competitorname</span>, <span class='va'>winpercent</span><span class='op'>)</span>, fill <span class='op'>=</span><span class='va'>`Types of Candy`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
@@ -1544,7 +1798,635 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p>Walt Hickey’s 538 data set about Halloween candy consists of 83 candies, each acting as an individual unit of analysis. The popularity of these Halloween candies were measured by the percentage of matchups won by each candy in an online preference matchup. This bar plot was produced after ranking all 83 candies in descending order, based on the percentage of matchups they won. Subsequently, the focus was narrowed by selecting a representative sample of the top 15 candies of the original 83.</p>
 <p>This bar plot supports my hypothesis that Halloween candies made with nuts (or nut products), classified as “Nut Candy” in the bar plot, are more popular among consumers than candies made without nuts (or nut products), classified as “Nut-Free Candy” in the bar plot. This assertion gains support when we consider that 8 out of the top 15 candies are “Nut Candies,” and these 8 “Nut Candies” maintained rankings within the top 11 positions, ranking as high as 1st, 2nd, and 5th places. Ultimately, the bar plot demonstrates compelling evidence that candies with nuts are more popular with treat-seeking consumers during the Halloween season.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>candy_rankings</span> <span class='op'>&lt;-</span> <span class='va'>candy</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>`Types of Candy` <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>peanutyalmondy</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Nut Candy"</span>, <span class='st'>"Nut-Free Candy"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span> <span class='va'>competitorname</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"One dime"</span>, <span class='st'>"One quarter"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>slice_max</span><span class='op'>(</span><span class='va'>sugarpercent</span>, n <span class='op'>=</span> <span class='fl'>85</span><span class='op'>)</span> </span>
+<span><span class='va'>candy_rankings</span></span></code></pre>
+</div>
+<pre><code>                competitorname chocolate fruity caramel
+1  Reese&#39;s stuffed with pieces         1      0       0
+2     Milky Way Simply Caramel         1      0       1
+3                 Sugar Babies         0      0       1
+4            Skittles original         0      1       0
+5           Skittles wildberry         0      1       0
+6                    Air Heads         0      1       0
+7                   Candy Corn         0      0       0
+8                   Gobstopper         0      1       0
+9                   Mike &amp; Ike         0      1       0
+10                       Runts         0      1       0
+11                    Whoppers         1      0       0
+12                        Rolo         1      0       1
+13                       Nerds         0      1       0
+14         Peanut butter M&amp;M&#39;s         1      0       0
+15                       M&amp;M&#39;s         1      0       0
+16                   100 Grand         1      0       1
+17  Chewey Lemonhead Fruit Mix         0      1       0
+18                        Dots         0      1       0
+19                    Dum Dums         0      1       0
+20                     Fun Dip         0      1       0
+21          Milky Way Midnight         1      0       1
+22                    Ring pop         0      1       0
+23           Root Beer Barrels         0      0       0
+24   Reese&#39;s Peanut Butter cup         1      0       0
+25                3 Musketeers         1      0       0
+26                   Baby Ruth         1      0       1
+27          Caramel Apple Pops         0      1       1
+28             Charleston Chew         1      0       0
+29                   Milky Way         1      0       1
+30         Nestle Butterfinger         1      0       0
+31                   Pop Rocks         0      1       0
+32            Snickers Crisper         1      0       1
+33                Swedish Fish         0      1       0
+34                 Tootsie Pop         1      1       0
+35                 Peanut M&amp;Ms         1      0       0
+36                   Red vines         0      1       0
+37         Strawberry bon bons         0      1       0
+38                    Snickers         1      0       1
+39                        Twix         1      0       1
+40                  Almond Joy         1      0       0
+41           Haribo Gold Bears         0      1       0
+42           Haribo Happy Cola         0      0       0
+43           Haribo Sour Bears         0      1       0
+44          Haribo Twin Snakes         0      1       0
+45                      Payday         0      0       0
+46     Tootsie Roll Snack Bars         1      0       0
+47           Hershey&#39;s Krackel         1      0       0
+48    Hershey&#39;s Milk Chocolate         1      0       0
+49      Hershey&#39;s Special Dark         1      0       0
+50                 Sugar Daddy         0      0       1
+51              Reese&#39;s pieces         1      0       0
+52          Boston Baked Beans         0      0       0
+53                     Kit Kat         1      0       0
+54                      Mounds         1      0       0
+55                 Mr Good Bar         1      0       0
+56               Nestle Crunch         1      0       0
+57        Tootsie Roll Juniors         1      0       0
+58           Trolli Sour Bites         0      1       0
+59        Welch&#39;s Fruit Snacks         0      1       0
+60                   Milk Duds         1      0       1
+61 Lifesavers big ring gummies         0      1       0
+62             Nestle Smarties         1      0       0
+63              Smarties candy         0      1       0
+64                 Laffy Taffy         0      1       0
+65                 Now &amp; Later         0      1       0
+66                     Sixlets         1      0       0
+67                   Twizzlers         0      1       0
+68                Junior Mints         1      0       0
+69                   Nik L Nip         0      1       0
+70  Werther&#39;s Original Caramel         0      0       1
+71        Tootsie Roll Midgies         1      0       0
+72                Super Bubble         0      1       0
+73                   Starburst         0      1       0
+74                 Fruit Chews         0      1       0
+75            Hershey&#39;s Kisses         1      0       0
+76                  Jawbusters         0      1       0
+77                Pixie Sticks         0      0       0
+78                    Warheads         0      1       0
+79             Sour Patch Kids         0      1       0
+80       Sour Patch Tricksters         0      1       0
+81                    Chiclets         0      1       0
+82                   Lemonhead         0      1       0
+83          Reese&#39;s Miniatures         1      0       0
+   peanutyalmondy nougat crispedricewafer hard bar pluribus
+1               1      0                0    0   0        0
+2               0      0                0    0   1        0
+3               0      0                0    0   0        1
+4               0      0                0    0   0        1
+5               0      0                0    0   0        1
+6               0      0                0    0   0        0
+7               0      0                0    0   0        1
+8               0      0                0    1   0        1
+9               0      0                0    0   0        1
+10              0      0                0    1   0        1
+11              0      0                1    0   0        1
+12              0      0                0    0   0        1
+13              0      0                0    1   0        1
+14              1      0                0    0   0        1
+15              0      0                0    0   0        1
+16              0      0                1    0   1        0
+17              0      0                0    0   0        1
+18              0      0                0    0   0        1
+19              0      0                0    1   0        0
+20              0      0                0    1   0        0
+21              0      1                0    0   1        0
+22              0      0                0    1   0        0
+23              0      0                0    1   0        1
+24              1      0                0    0   0        0
+25              0      1                0    0   1        0
+26              1      1                0    0   1        0
+27              0      0                0    0   0        0
+28              0      1                0    0   1        0
+29              0      1                0    0   1        0
+30              1      0                0    0   1        0
+31              0      0                0    1   0        1
+32              1      0                1    0   1        0
+33              0      0                0    0   0        1
+34              0      0                0    1   0        0
+35              1      0                0    0   0        1
+36              0      0                0    0   0        1
+37              0      0                0    1   0        1
+38              1      1                0    0   1        0
+39              0      0                1    0   1        0
+40              1      0                0    0   1        0
+41              0      0                0    0   0        1
+42              0      0                0    0   0        1
+43              0      0                0    0   0        1
+44              0      0                0    0   0        1
+45              1      1                0    0   1        0
+46              0      0                0    0   1        0
+47              0      0                1    0   1        0
+48              0      0                0    0   1        0
+49              0      0                0    0   1        0
+50              0      0                0    0   0        0
+51              1      0                0    0   0        1
+52              1      0                0    0   0        1
+53              0      0                1    0   1        0
+54              0      0                0    0   1        0
+55              1      0                0    0   1        0
+56              0      0                1    0   1        0
+57              0      0                0    0   0        0
+58              0      0                0    0   0        1
+59              0      0                0    0   0        1
+60              0      0                0    0   0        1
+61              0      0                0    0   0        0
+62              0      0                0    0   0        1
+63              0      0                0    1   0        1
+64              0      0                0    0   0        0
+65              0      0                0    0   0        1
+66              0      0                0    0   0        1
+67              0      0                0    0   0        0
+68              0      0                0    0   0        1
+69              0      0                0    0   0        1
+70              0      0                0    1   0        0
+71              0      0                0    0   0        1
+72              0      0                0    0   0        0
+73              0      0                0    0   0        1
+74              0      0                0    0   0        1
+75              0      0                0    0   0        1
+76              0      0                0    1   0        1
+77              0      0                0    0   0        1
+78              0      0                0    1   0        0
+79              0      0                0    0   0        1
+80              0      0                0    0   0        1
+81              0      0                0    0   0        1
+82              0      0                0    1   0        0
+83              1      0                0    0   0        0
+   sugarpercent pricepercent winpercent Types of Candy
+1         0.988        0.651   72.88790      Nut Candy
+2         0.965        0.860   64.35334 Nut-Free Candy
+3         0.965        0.767   33.43755 Nut-Free Candy
+4         0.941        0.220   63.08514 Nut-Free Candy
+5         0.941        0.220   55.10370 Nut-Free Candy
+6         0.906        0.511   52.34146 Nut-Free Candy
+7         0.906        0.325   38.01096 Nut-Free Candy
+8         0.906        0.453   46.78335 Nut-Free Candy
+9         0.872        0.325   46.41172 Nut-Free Candy
+10        0.872        0.279   42.84914 Nut-Free Candy
+11        0.872        0.848   49.52411 Nut-Free Candy
+12        0.860        0.860   65.71629 Nut-Free Candy
+13        0.848        0.325   55.35405 Nut-Free Candy
+14        0.825        0.651   71.46505      Nut Candy
+15        0.825        0.651   66.57458 Nut-Free Candy
+16        0.732        0.860   66.97173 Nut-Free Candy
+17        0.732        0.511   36.01763 Nut-Free Candy
+18        0.732        0.511   42.27208 Nut-Free Candy
+19        0.732        0.034   39.46056 Nut-Free Candy
+20        0.732        0.325   39.18550 Nut-Free Candy
+21        0.732        0.441   60.80070 Nut-Free Candy
+22        0.732        0.965   35.29076 Nut-Free Candy
+23        0.732        0.069   29.70369 Nut-Free Candy
+24        0.720        0.651   84.18029      Nut Candy
+25        0.604        0.511   67.60294 Nut-Free Candy
+26        0.604        0.767   56.91455      Nut Candy
+27        0.604        0.325   34.51768 Nut-Free Candy
+28        0.604        0.511   38.97504 Nut-Free Candy
+29        0.604        0.651   73.09956 Nut-Free Candy
+30        0.604        0.767   70.73564      Nut Candy
+31        0.604        0.837   41.26551 Nut-Free Candy
+32        0.604        0.651   59.52925      Nut Candy
+33        0.604        0.755   54.86111 Nut-Free Candy
+34        0.604        0.325   48.98265 Nut-Free Candy
+35        0.593        0.651   69.48379      Nut Candy
+36        0.581        0.116   37.34852 Nut-Free Candy
+37        0.569        0.058   34.57899 Nut-Free Candy
+38        0.546        0.651   76.67378      Nut Candy
+39        0.546        0.906   81.64291 Nut-Free Candy
+40        0.465        0.767   50.34755      Nut Candy
+41        0.465        0.465   57.11974 Nut-Free Candy
+42        0.465        0.465   34.15896 Nut-Free Candy
+43        0.465        0.465   51.41243 Nut-Free Candy
+44        0.465        0.465   42.17877 Nut-Free Candy
+45        0.465        0.767   46.29660      Nut Candy
+46        0.465        0.325   49.65350 Nut-Free Candy
+47        0.430        0.918   62.28448 Nut-Free Candy
+48        0.430        0.918   56.49050 Nut-Free Candy
+49        0.430        0.918   59.23612 Nut-Free Candy
+50        0.418        0.325   32.23100 Nut-Free Candy
+51        0.406        0.651   73.43499      Nut Candy
+52        0.313        0.511   23.41782      Nut Candy
+53        0.313        0.511   76.76860 Nut-Free Candy
+54        0.313        0.860   47.82975 Nut-Free Candy
+55        0.313        0.918   54.52645      Nut Candy
+56        0.313        0.767   66.47068 Nut-Free Candy
+57        0.313        0.511   43.06890 Nut-Free Candy
+58        0.313        0.255   47.17323 Nut-Free Candy
+59        0.313        0.313   44.37552 Nut-Free Candy
+60        0.302        0.511   55.06407 Nut-Free Candy
+61        0.267        0.279   52.91139 Nut-Free Candy
+62        0.267        0.976   37.88719 Nut-Free Candy
+63        0.267        0.116   45.99583 Nut-Free Candy
+64        0.220        0.116   41.38956 Nut-Free Candy
+65        0.220        0.325   39.44680 Nut-Free Candy
+66        0.220        0.081   34.72200 Nut-Free Candy
+67        0.220        0.116   45.46628 Nut-Free Candy
+68        0.197        0.511   57.21925 Nut-Free Candy
+69        0.197        0.976   22.44534 Nut-Free Candy
+70        0.186        0.267   41.90431 Nut-Free Candy
+71        0.174        0.011   45.73675 Nut-Free Candy
+72        0.162        0.116   27.30386 Nut-Free Candy
+73        0.151        0.220   67.03763 Nut-Free Candy
+74        0.127        0.034   43.08892 Nut-Free Candy
+75        0.127        0.093   55.37545 Nut-Free Candy
+76        0.093        0.511   28.12744 Nut-Free Candy
+77        0.093        0.023   37.72234 Nut-Free Candy
+78        0.093        0.116   39.01190 Nut-Free Candy
+79        0.069        0.116   59.86400 Nut-Free Candy
+80        0.069        0.116   52.82595 Nut-Free Candy
+81        0.046        0.325   24.52499 Nut-Free Candy
+82        0.046        0.104   39.14106 Nut-Free Candy
+83        0.034        0.279   81.86626      Nut Candy</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='va'>candy_rankings</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sugarpercent</span>, y <span class='op'>=</span> <span class='va'>winpercent</span>, color <span class='op'>=</span> <span class='va'>`Types of Candy`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>candy_rankings</span><span class='op'>$</span><span class='va'>winpercent</span><span class='op'>)</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_vline</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>candy_rankings</span><span class='op'>$</span><span class='va'>sugarpercent</span><span class='op'>)</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Percentile of Sugar Content in Candies"</span>, y <span class='op'>=</span> <span class='st'>"Percentile of Matchups Won by Candies"</span>, title <span class='op'>=</span> <span class='st'>"Percentile of Sugar Content in Candies vs. Percentile of Matchups Won by Candies"</span>, caption <span class='op'>=</span> <span class='st'>"Walt Hickey's 538 Data Set"</span><span class='op'>)</span></span>
+<span><span class='va'>graph</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>candy_rankings</span> <span class='op'>&lt;-</span> <span class='va'>candy</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>`Candy With Nut Products` <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>peanutyalmondy</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Candy With Crunchy Nuts"</span>, <span class='st'>"Candy With Creamy Peanut Butter"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span> <span class='va'>competitorname</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"One dime"</span>, <span class='st'>"One quarter"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>slice_max</span><span class='op'>(</span><span class='va'>winpercent</span>, n <span class='op'>=</span> <span class='fl'>85</span><span class='op'>)</span> </span>
+<span><span class='va'>candy_rankings</span></span></code></pre>
+</div>
+<pre><code>                competitorname chocolate fruity caramel
+1    Reese&#39;s Peanut Butter cup         1      0       0
+2           Reese&#39;s Miniatures         1      0       0
+3                         Twix         1      0       1
+4                      Kit Kat         1      0       0
+5                     Snickers         1      0       1
+6               Reese&#39;s pieces         1      0       0
+7                    Milky Way         1      0       1
+8  Reese&#39;s stuffed with pieces         1      0       0
+9          Peanut butter M&amp;M&#39;s         1      0       0
+10         Nestle Butterfinger         1      0       0
+11                 Peanut M&amp;Ms         1      0       0
+12                3 Musketeers         1      0       0
+13                   Starburst         0      1       0
+14                   100 Grand         1      0       1
+15                       M&amp;M&#39;s         1      0       0
+16               Nestle Crunch         1      0       0
+17                        Rolo         1      0       1
+18    Milky Way Simply Caramel         1      0       1
+19           Skittles original         0      1       0
+20           Hershey&#39;s Krackel         1      0       0
+21          Milky Way Midnight         1      0       1
+22             Sour Patch Kids         0      1       0
+23            Snickers Crisper         1      0       1
+24      Hershey&#39;s Special Dark         1      0       0
+25                Junior Mints         1      0       0
+26           Haribo Gold Bears         0      1       0
+27                   Baby Ruth         1      0       1
+28    Hershey&#39;s Milk Chocolate         1      0       0
+29            Hershey&#39;s Kisses         1      0       0
+30                       Nerds         0      1       0
+31          Skittles wildberry         0      1       0
+32                   Milk Duds         1      0       1
+33                Swedish Fish         0      1       0
+34                 Mr Good Bar         1      0       0
+35 Lifesavers big ring gummies         0      1       0
+36       Sour Patch Tricksters         0      1       0
+37                   Air Heads         0      1       0
+38           Haribo Sour Bears         0      1       0
+39                  Almond Joy         1      0       0
+40     Tootsie Roll Snack Bars         1      0       0
+41                    Whoppers         1      0       0
+42                 Tootsie Pop         1      1       0
+43                      Mounds         1      0       0
+44           Trolli Sour Bites         0      1       0
+45                  Gobstopper         0      1       0
+46                  Mike &amp; Ike         0      1       0
+47                      Payday         0      0       0
+48              Smarties candy         0      1       0
+49        Tootsie Roll Midgies         1      0       0
+50                   Twizzlers         0      1       0
+51        Welch&#39;s Fruit Snacks         0      1       0
+52                 Fruit Chews         0      1       0
+53        Tootsie Roll Juniors         1      0       0
+54                       Runts         0      1       0
+55                        Dots         0      1       0
+56          Haribo Twin Snakes         0      1       0
+57  Werther&#39;s Original Caramel         0      0       1
+58                 Laffy Taffy         0      1       0
+59                   Pop Rocks         0      1       0
+60                    Dum Dums         0      1       0
+61                 Now &amp; Later         0      1       0
+62                     Fun Dip         0      1       0
+63                   Lemonhead         0      1       0
+64                    Warheads         0      1       0
+65             Charleston Chew         1      0       0
+66                  Candy Corn         0      0       0
+67             Nestle Smarties         1      0       0
+68                Pixie Sticks         0      0       0
+69                   Red vines         0      1       0
+70  Chewey Lemonhead Fruit Mix         0      1       0
+71                    Ring pop         0      1       0
+72                     Sixlets         1      0       0
+73         Strawberry bon bons         0      1       0
+74          Caramel Apple Pops         0      1       1
+75           Haribo Happy Cola         0      0       0
+76                Sugar Babies         0      0       1
+77                 Sugar Daddy         0      0       1
+78           Root Beer Barrels         0      0       0
+79                  Jawbusters         0      1       0
+80                Super Bubble         0      1       0
+81                    Chiclets         0      1       0
+82          Boston Baked Beans         0      0       0
+83                   Nik L Nip         0      1       0
+   peanutyalmondy nougat crispedricewafer hard bar pluribus
+1               1      0                0    0   0        0
+2               1      0                0    0   0        0
+3               0      0                1    0   1        0
+4               0      0                1    0   1        0
+5               1      1                0    0   1        0
+6               1      0                0    0   0        1
+7               0      1                0    0   1        0
+8               1      0                0    0   0        0
+9               1      0                0    0   0        1
+10              1      0                0    0   1        0
+11              1      0                0    0   0        1
+12              0      1                0    0   1        0
+13              0      0                0    0   0        1
+14              0      0                1    0   1        0
+15              0      0                0    0   0        1
+16              0      0                1    0   1        0
+17              0      0                0    0   0        1
+18              0      0                0    0   1        0
+19              0      0                0    0   0        1
+20              0      0                1    0   1        0
+21              0      1                0    0   1        0
+22              0      0                0    0   0        1
+23              1      0                1    0   1        0
+24              0      0                0    0   1        0
+25              0      0                0    0   0        1
+26              0      0                0    0   0        1
+27              1      1                0    0   1        0
+28              0      0                0    0   1        0
+29              0      0                0    0   0        1
+30              0      0                0    1   0        1
+31              0      0                0    0   0        1
+32              0      0                0    0   0        1
+33              0      0                0    0   0        1
+34              1      0                0    0   1        0
+35              0      0                0    0   0        0
+36              0      0                0    0   0        1
+37              0      0                0    0   0        0
+38              0      0                0    0   0        1
+39              1      0                0    0   1        0
+40              0      0                0    0   1        0
+41              0      0                1    0   0        1
+42              0      0                0    1   0        0
+43              0      0                0    0   1        0
+44              0      0                0    0   0        1
+45              0      0                0    1   0        1
+46              0      0                0    0   0        1
+47              1      1                0    0   1        0
+48              0      0                0    1   0        1
+49              0      0                0    0   0        1
+50              0      0                0    0   0        0
+51              0      0                0    0   0        1
+52              0      0                0    0   0        1
+53              0      0                0    0   0        0
+54              0      0                0    1   0        1
+55              0      0                0    0   0        1
+56              0      0                0    0   0        1
+57              0      0                0    1   0        0
+58              0      0                0    0   0        0
+59              0      0                0    1   0        1
+60              0      0                0    1   0        0
+61              0      0                0    0   0        1
+62              0      0                0    1   0        0
+63              0      0                0    1   0        0
+64              0      0                0    1   0        0
+65              0      1                0    0   1        0
+66              0      0                0    0   0        1
+67              0      0                0    0   0        1
+68              0      0                0    0   0        1
+69              0      0                0    0   0        1
+70              0      0                0    0   0        1
+71              0      0                0    1   0        0
+72              0      0                0    0   0        1
+73              0      0                0    1   0        1
+74              0      0                0    0   0        0
+75              0      0                0    0   0        1
+76              0      0                0    0   0        1
+77              0      0                0    0   0        0
+78              0      0                0    1   0        1
+79              0      0                0    1   0        1
+80              0      0                0    0   0        0
+81              0      0                0    0   0        1
+82              1      0                0    0   0        1
+83              0      0                0    0   0        1
+   sugarpercent pricepercent winpercent
+1         0.720        0.651   84.18029
+2         0.034        0.279   81.86626
+3         0.546        0.906   81.64291
+4         0.313        0.511   76.76860
+5         0.546        0.651   76.67378
+6         0.406        0.651   73.43499
+7         0.604        0.651   73.09956
+8         0.988        0.651   72.88790
+9         0.825        0.651   71.46505
+10        0.604        0.767   70.73564
+11        0.593        0.651   69.48379
+12        0.604        0.511   67.60294
+13        0.151        0.220   67.03763
+14        0.732        0.860   66.97173
+15        0.825        0.651   66.57458
+16        0.313        0.767   66.47068
+17        0.860        0.860   65.71629
+18        0.965        0.860   64.35334
+19        0.941        0.220   63.08514
+20        0.430        0.918   62.28448
+21        0.732        0.441   60.80070
+22        0.069        0.116   59.86400
+23        0.604        0.651   59.52925
+24        0.430        0.918   59.23612
+25        0.197        0.511   57.21925
+26        0.465        0.465   57.11974
+27        0.604        0.767   56.91455
+28        0.430        0.918   56.49050
+29        0.127        0.093   55.37545
+30        0.848        0.325   55.35405
+31        0.941        0.220   55.10370
+32        0.302        0.511   55.06407
+33        0.604        0.755   54.86111
+34        0.313        0.918   54.52645
+35        0.267        0.279   52.91139
+36        0.069        0.116   52.82595
+37        0.906        0.511   52.34146
+38        0.465        0.465   51.41243
+39        0.465        0.767   50.34755
+40        0.465        0.325   49.65350
+41        0.872        0.848   49.52411
+42        0.604        0.325   48.98265
+43        0.313        0.860   47.82975
+44        0.313        0.255   47.17323
+45        0.906        0.453   46.78335
+46        0.872        0.325   46.41172
+47        0.465        0.767   46.29660
+48        0.267        0.116   45.99583
+49        0.174        0.011   45.73675
+50        0.220        0.116   45.46628
+51        0.313        0.313   44.37552
+52        0.127        0.034   43.08892
+53        0.313        0.511   43.06890
+54        0.872        0.279   42.84914
+55        0.732        0.511   42.27208
+56        0.465        0.465   42.17877
+57        0.186        0.267   41.90431
+58        0.220        0.116   41.38956
+59        0.604        0.837   41.26551
+60        0.732        0.034   39.46056
+61        0.220        0.325   39.44680
+62        0.732        0.325   39.18550
+63        0.046        0.104   39.14106
+64        0.093        0.116   39.01190
+65        0.604        0.511   38.97504
+66        0.906        0.325   38.01096
+67        0.267        0.976   37.88719
+68        0.093        0.023   37.72234
+69        0.581        0.116   37.34852
+70        0.732        0.511   36.01763
+71        0.732        0.965   35.29076
+72        0.220        0.081   34.72200
+73        0.569        0.058   34.57899
+74        0.604        0.325   34.51768
+75        0.465        0.465   34.15896
+76        0.965        0.767   33.43755
+77        0.418        0.325   32.23100
+78        0.732        0.069   29.70369
+79        0.093        0.511   28.12744
+80        0.162        0.116   27.30386
+81        0.046        0.325   24.52499
+82        0.313        0.511   23.41782
+83        0.197        0.976   22.44534
+           Candy With Nut Products
+1          Candy With Crunchy Nuts
+2          Candy With Crunchy Nuts
+3  Candy With Creamy Peanut Butter
+4  Candy With Creamy Peanut Butter
+5          Candy With Crunchy Nuts
+6          Candy With Crunchy Nuts
+7  Candy With Creamy Peanut Butter
+8          Candy With Crunchy Nuts
+9          Candy With Crunchy Nuts
+10         Candy With Crunchy Nuts
+11         Candy With Crunchy Nuts
+12 Candy With Creamy Peanut Butter
+13 Candy With Creamy Peanut Butter
+14 Candy With Creamy Peanut Butter
+15 Candy With Creamy Peanut Butter
+16 Candy With Creamy Peanut Butter
+17 Candy With Creamy Peanut Butter
+18 Candy With Creamy Peanut Butter
+19 Candy With Creamy Peanut Butter
+20 Candy With Creamy Peanut Butter
+21 Candy With Creamy Peanut Butter
+22 Candy With Creamy Peanut Butter
+23         Candy With Crunchy Nuts
+24 Candy With Creamy Peanut Butter
+25 Candy With Creamy Peanut Butter
+26 Candy With Creamy Peanut Butter
+27         Candy With Crunchy Nuts
+28 Candy With Creamy Peanut Butter
+29 Candy With Creamy Peanut Butter
+30 Candy With Creamy Peanut Butter
+31 Candy With Creamy Peanut Butter
+32 Candy With Creamy Peanut Butter
+33 Candy With Creamy Peanut Butter
+34         Candy With Crunchy Nuts
+35 Candy With Creamy Peanut Butter
+36 Candy With Creamy Peanut Butter
+37 Candy With Creamy Peanut Butter
+38 Candy With Creamy Peanut Butter
+39         Candy With Crunchy Nuts
+40 Candy With Creamy Peanut Butter
+41 Candy With Creamy Peanut Butter
+42 Candy With Creamy Peanut Butter
+43 Candy With Creamy Peanut Butter
+44 Candy With Creamy Peanut Butter
+45 Candy With Creamy Peanut Butter
+46 Candy With Creamy Peanut Butter
+47         Candy With Crunchy Nuts
+48 Candy With Creamy Peanut Butter
+49 Candy With Creamy Peanut Butter
+50 Candy With Creamy Peanut Butter
+51 Candy With Creamy Peanut Butter
+52 Candy With Creamy Peanut Butter
+53 Candy With Creamy Peanut Butter
+54 Candy With Creamy Peanut Butter
+55 Candy With Creamy Peanut Butter
+56 Candy With Creamy Peanut Butter
+57 Candy With Creamy Peanut Butter
+58 Candy With Creamy Peanut Butter
+59 Candy With Creamy Peanut Butter
+60 Candy With Creamy Peanut Butter
+61 Candy With Creamy Peanut Butter
+62 Candy With Creamy Peanut Butter
+63 Candy With Creamy Peanut Butter
+64 Candy With Creamy Peanut Butter
+65 Candy With Creamy Peanut Butter
+66 Candy With Creamy Peanut Butter
+67 Candy With Creamy Peanut Butter
+68 Candy With Creamy Peanut Butter
+69 Candy With Creamy Peanut Butter
+70 Candy With Creamy Peanut Butter
+71 Candy With Creamy Peanut Butter
+72 Candy With Creamy Peanut Butter
+73 Candy With Creamy Peanut Butter
+74 Candy With Creamy Peanut Butter
+75 Candy With Creamy Peanut Butter
+76 Candy With Creamy Peanut Butter
+77 Candy With Creamy Peanut Butter
+78 Candy With Creamy Peanut Butter
+79 Candy With Creamy Peanut Butter
+80 Candy With Creamy Peanut Butter
+81 Candy With Creamy Peanut Butter
+82         Candy With Crunchy Nuts
+83 Candy With Creamy Peanut Butter</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>graph</span> <span class='op'>&lt;-</span> <span class='va'>candy_rankings</span> <span class='op'>|&gt;</span> </span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>competitorname</span>, y <span class='op'>=</span> <span class='va'>winpercent</span>, color <span class='op'>=</span> <span class='va'>`Candy With Nut Products`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_hline</span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>candy_rankings</span><span class='op'>$</span><span class='va'>winpercent</span><span class='op'>)</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>geom_vline</span><span class='op'>(</span>xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>candy_rankings</span><span class='op'>$</span><span class='va'>competitorname</span><span class='op'>)</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Names of Candies"</span>, y <span class='op'>=</span> <span class='st'>"Percentile of Matchups Won by Candies"</span>, title <span class='op'>=</span> <span class='st'>"Names of Candies vs. Percentile of Matchups Won by Candies"</span>, caption <span class='op'>=</span> <span class='st'>"Walt Hickey's 538 Data Set"</span><span class='op'>)</span></span>
+<span><span class='va'>graph</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
