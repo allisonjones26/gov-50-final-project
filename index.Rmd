@@ -7,14 +7,12 @@ output:
     self_contained: false
 ---
 ## Introduction
-For my final project, I explore data related to the popularity of Halloween candies containing peanuts and nuts, comparing them to the popularity of nut-free Halloween candy. My research question is: “Does the presence of peanuts or nuts in Halloween candy affect its popularity in preference matchups?” In this study, I plan to examine the impact of nut content on the popularity of Halloween candies by analyzing the results of an online preference matchup involving randomly generated candy matchups. I hypothesize that Halloween candies containing peanuts or nuts will be more popular in preference matchups compared to candies not containing peanuts or nuts. My hypothesis is based on the belief that the nutty flavor and crunchy texture, associated with candies containing peanuts or nuts, may lead to consumers having a more enhanced sensory experience. If I observe a larger percentage of matchups won by candies containing peanuts or nuts, then this would support my hypothesis. Conversely, if I observe a larger percentage of matchups won by candies not containing peanuts or nuts, then this would suggest my hypothesis would not be supported. 
+For my final project, I explore data related to the popularity of Halloween candies containing peanuts or nuts, comparing them to the popularity of nut-free Halloween candy. My research question is: “Does the presence of peanuts or nuts in Halloween candy affect its popularity in preference matchups?” In this study, I plan to examine the impact of nut content on the popularity of Halloween candies by analyzing the results of an online preference matchup involving randomly generated candy matchups. I hypothesize that Halloween candies containing peanuts or nuts will be more popular in preference matchups compared to candies not containing peanuts or nuts. My hypothesis is based on the belief that the nutty flavor and crunchy texture, associated with candies containing peanuts or nuts, may lead to consumers having a more enhanced sensory experience. If I observe a larger percentage of matchups won by candies containing peanuts or nuts, then this would support my hypothesis. Conversely, if I observe a larger percentage of matchups won by candies not containing peanuts or nuts, then this suggests my hypothesis would not be supported. 
 
 My research question is interesting and informative because it connects the popular Halloween tradition of trick-o-treating to a specific candy ingredient, thereby providing insights into the factors that make certain Halloween candies more popular among consumers. My analysis of the popularity of Halloween candies should help consumers make informed and cost-effective decisions when buying candy during the Halloween season. This will enable consumers to maximize money saved and minimize candy wasted, both of which are important amidst the current era of inflation and climate change. 
 
 ## Data and Research Method 
-The data source for this analysis is Walt Hickey’s 538 dataset on Halloween candy preferences, collected from an online preference matchup involving 8,371 different IP addresses and 269,000 randomly generated matchups. The dataset consists of 83 different candies, 13 of which contain peanuts or nuts, and each of the candies acts as an individual unit of analysis. The key independent variable is whether the candy contains peanuts or nuts, and is coded =1 for candies that contain peanuts or nuts and =0 for candies that do not contain peanuts or nuts. The key dependent variable is the popularity of each Halloween candy, measured by the percentage of matchups won in the online preference matchup where online participants were presented with pairs of candies and asked to choose their preferred candy from each pair. The research design is a cross-sectional design because the observational study compares the popularity of candies with nuts and nut free-candies after the online preference matchups have occurred.
-
-The following barplot visually summarizes the dependent variable by ranking the top 15 most popular Halloween candies in descending order of the percentage of online preference matchups they won. The bar plot supports my hypothesis that Halloween candies containing peanuts or nuts, classified as “Nut Candy” in blue, are more popular among consumers than candies not containing nuts, classified as “Nut-Free Candy” in red. This assertion gains support when considering that 8 out of the 13 total nut candies are among the top 15 candies, and these 8 nut candies maintained rankings within the top 11 spots, ranking as high as 1st, 2nd, and 5th. 
+The data source for this analysis is Walt Hickey’s 538 dataset on Halloween candy preferences, collected from an online preference matchup involving 8,371 different IP addresses and 269,000 randomly generated matchups. The dataset consists of 83 different candies, 13 of which contain peanuts or nuts, and each of the candies acts as an individual unit of analysis. The key independent variable is whether the candy contains peanuts or nuts, and is coded =1 for candies that contain peanuts or nuts and =0 for nut-free candies. The key dependent variable is the popularity of each Halloween candy, measured by the percentage of matchups won in the online preference matchup where online participants were presented with pairs of candies and asked to choose their preferred candy from each pair. The research design is a cross-sectional design because the observational study compares the popularity of candies with nuts and nut free-candies after the online preference matchups have occurred.
 
 ```{r}
 library(tidyverse)
@@ -33,11 +31,12 @@ candy_rankings_graph <- candy_rankings |>
   ggplot(mapping = aes(x = winpercent, y = fct_reorder(competitorname, winpercent), fill =`Types of Candy`)) +
   geom_col() + 
   scale_fill_manual(values = c("steelblue1","indianred1")) +
-  labs(x = "Percentage of Matchups Won by Candies", y = "Name of Candies", title = "Percentage of Matchups Won by Nut Candies vs. Nut-Free Candies", caption = "Walt Hickey's 538 Data Set")
+  labs(x = "Percentage of Matchups Won by Candies", y = "Name of Candies", 
+       title = "Matchups Won by Nut Candies vs. Nut-Free Candies", 
+       caption = "Walt Hickey's 538 Data Set")
 candy_rankings_graph
 ```
-
-The estimated average treatment effect (ATE) is 15.77, meaning that the candies containing peanuts or nuts (the treatment group) won more matchups than nut-free candies (the control group) by 15.77 points. Ultimately, the barplot and the ATE calculation demonstrate compelling evidence that candies containing peanuts or nuts are more popular among treat-seeking consumers during the Halloween season. 
+This barplot visually summarizes the dependent variable by ranking the top 15 most popular Halloween candies in descending order of the percentage of online preference matchups they won. The bar plot supports my hypothesis that Halloween candies containing peanuts or nuts, classified as “Nut Candy” in blue, are more popular among consumers than candies not containing nuts, classified as “Nut-Free Candy” in red. This assertion gains support when considering that 8 out of the 13 total nut candies are among the top 15 candies, and these 8 nut candies maintained rankings within the top 11 spots, ranking as high as 1st, 2nd, and 5th. 
 
 ```{r}
 nuts <- candy_rankings |> 
@@ -55,8 +54,9 @@ ATE
 knitr::kable(ATE, digits = 3, col.names = c("ATE (Mean Percent Won)"))
 ```
 
+The estimated average treatment effect (ATE) is 15.77, meaning that the candies containing peanuts or nuts (the treatment group) won more matchups than nut-free candies (the control group) by 15.77 points. Ultimately, the barplot and the ATE calculation demonstrate compelling evidence that candies containing peanuts or nuts are more popular among treat-seeking consumers during the Halloween season. 
+
 ## Results
-In order to test the strength of the barplot’s finding that candies with nuts are more popular among consumers, I ran a linear regression examining the relationship between the percentage of sugar in candies and the percentage of online preference matchups won. The following scatter plot indicates a strong correlation between higher sugar content and increased popularity in matchups. Notably, the upper right quadrant, representing candies with above-average sugar content and high matchups won, features 8 out of the 13 total nut candies. This suggests that nut candies not only tend to be sweeter but also outperform nut-free candies, even in the presence of elevated sugar levels. These findings suggest a preference for the combination of nutty flavors, crunchy texture, and increased sweetness in Halloween candies.
 
 ```{r}
 candy_rankings <- candy |> 
@@ -71,11 +71,12 @@ sugar_vs_win_graph <- candy_rankings |>
   geom_smooth(method = "lm", se = FALSE, color = "black") + 
   geom_hline(yintercept = mean(candy_rankings$winpercent), linetype = "dashed") + 
   geom_vline(xintercept = mean(candy_rankings$sugarpercent), linetype = "dashed") + 
-  labs(x = "Percentile of Sugar Content in Candies", y = "Percentile of Matchups Won by Candies", title = "Percentile of Sugar Content in Candies vs. Percentile of Matchups Won by Candies", caption = "Walt Hickey's 538 Data Set")
+  labs(x = "Percentile of Sugar Content in Candies", y = "Percentile of Matchups Won by Candies", 
+       title = "Sugar Content in Candies vs. Percentile of Matchups Won by Candies", 
+       caption = "Walt Hickey's 538 Data Set")
 sugar_vs_win_graph 
 ```
-
-This table shows that the coefficient estimate for sugar percent in the regression is 11.08, indicating a positive association. This means that a one unit increase in sugar percent results in a 11.08 increase in the percentage of matchups won. Furthermore, the p-value in the regression is 0.06, which is greater than the alpha level of 0.05 and therefore not statistically significant. Based on this information, the coefficient of interest for sugar percent does not represent a causal effect as there may be confounders which could bias the study’s results. These confounders could include: name-brand recognition, regional or demographic preferences, and nut-allergies, which would cause participants to automatically prefer nut-free candies.
+In order to test the strength of the barplot’s finding that candies with nuts are more popular among consumers, I ran a linear regression examining the relationship between the percentage of sugar in candies and the percentage of online preference matchups won. The scatterplot indicates a strong correlation between higher sugar content and increased popularity in matchups. Notably, the upper right quadrant, representing candies with above-average sugar content and high matchups won, features 8 out of the 13 total nut candies. This suggests that nut candies not only tend to be sweeter but also outperform nut-free candies, even in the presence of elevated sugar levels. These findings suggest a preference for the combination of nutty flavors, crunchy texture, and increased sweetness in Halloween candies. 
 
 ```{r}
 fit <- lm(winpercent ~ sugarpercent, data = candy_rankings) |> 
@@ -83,14 +84,13 @@ fit <- lm(winpercent ~ sugarpercent, data = candy_rankings) |>
   select(term, est = estimate, se = std.error, pval = p.value)
 fit
 
-knitr::kable(fit, digits = 3, col.names = c("Variable", "Coefficient Estimate", "Standard Error", "P-Value"))
+knitr::kable(fit, digits = 3, 
+             col.names = c("Variable", "Coefficient Estimate", 
+                           "Standard Error", "P-Value"))
 ```
+This table shows that the coefficient estimate for sugar percent in the regression is 11.08, indicating a strong positive association. This means that a one unit increase in sugar percent results in a 11.08 increase in the percentage of matchups won. Furthermore, the p-value in the regression is 0.06, which is greater than the alpha level of 0.05 and therefore not statistically significant. Based on this information, the coefficient of interest for sugar percent does not represent a causal effect as there may be confounders which could bias the study’s results. These confounders could include: name-brand recognition, regional or demographic preferences, and nut-allergies, which would cause participants to automatically prefer nut-free candies.
 
 ## Conclusion 
-The results of the barplot and scatterplot both demonstrated a positive correlation between candies containing peanuts or nuts and higher percentages of matchups won, and, particularly, the scatterplot demonstrated that even in the presence of elevated sugar levels, candies containing peanuts or nuts still had a higher percentage of matchups won. While both of these plots support my hypothesis, the p-value from the regression was not statistically significant, and therefore, the coefficient of interest could not be causally interpreted, thereby weakening the strength of my hypothesis. This is likely due to the potential limitations of the study, including confounders such as name-brand recognition, regional or demographic preferences, and nut-allergies. Additionally, due to the online nature of the sample, the sample may have been unrepresentative since the 8,371 different IP addresses may have been concentrated in certain regions and among certain demographics, such as not being representative of participants with nut allergies. If there were more time and money, this study could be improved by taking a larger sample which would encapsulate a wider variety of regions and demographics, and by conducting the study as a longitudinal study which would analyze trends in Halloween candy preferences over time. 
-
-
-
-
+The results of the barplot and scatterplot both demonstrate a positive correlation between candies containing peanuts or nuts and higher percentages of matchups won, and, particularly, the scatterplot demonstrates that even in the presence of elevated sugar levels, candies containing peanuts or nuts still had a higher percentage of matchups won. While both of these plots support my hypothesis, the p-value from the regression was not statistically significant, and therefore, the coefficient of interest could not be causally interpreted, thereby weakening the strength of my hypothesis. This is likely due to the potential limitations of the study, including confounders such as name-brand recognition, regional or demographic preferences, and nut-allergies. Additionally, due to the online nature of the sample, the sample may have been unrepresentative since the 8,371 different IP addresses may have been concentrated in certain regions and among certain demographics. If there were more time and money, this study could be improved by taking a larger sample which would encapsulate a wider variety of regions and demographics, and by conducting the study as a longitudinal study which would analyze trends in Halloween candy preferences over time. 
 
 
